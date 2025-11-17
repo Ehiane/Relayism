@@ -1,0 +1,98 @@
+.scenario-list {
+  margin-bottom: 2rem;
+}
+
+.scenario-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.scenario-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.scenario-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.scenario-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+}
+
+.scenario-card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.scenario-card-body {
+  padding: 1rem;
+}
+
+.scenario-description {
+  margin: 0 0 0.75rem 0;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  min-height: 2.8rem;
+}
+
+.scenario-filename {
+  margin: 0;
+  color: #999;
+  font-size: 0.8rem;
+  font-family: 'Courier New', monospace;
+}
+
+.scenario-card-footer {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.run-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.run-button:hover:not(:disabled) {
+  background: #5568d3;
+  transform: scale(1.02);
+}
+
+.run-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.run-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.scenario-list-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}

@@ -1,0 +1,37 @@
+name: "Basic Activation Test"
+description: "Tests basic device activation sequence with nominal voltage and current"
+
+steps:
+  - step: write
+    register: voltage
+    value: 120.0
+
+  - step: write
+    register: current
+    value: 5.0
+
+  - step: assert
+    register: state
+    equals: "IDLE"
+
+  - step: command
+    action: activate
+
+  - step: assert
+    register: state
+    equals: "ACTIVE"
+
+  - step: assert
+    register: voltage
+    equals: 120.0
+
+  - step: assert
+    register: current
+    equals: 5.0
+
+  - step: command
+    action: reset
+
+  - step: assert
+    register: state
+    equals: "IDLE"

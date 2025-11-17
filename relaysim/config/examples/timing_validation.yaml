@@ -1,0 +1,42 @@
+name: "Timing Validation Test"
+description: "Validates device timing behavior and state transitions with delays"
+
+steps:
+  - step: write
+    register: voltage
+    value: 120.0
+
+  - step: write
+    register: current
+    value: 10.0
+
+  - step: assert
+    register: state
+    equals: "IDLE"
+
+  - step: command
+    action: activate
+
+  - step: wait
+    ms: 50
+
+  - step: assert
+    register: state
+    equals: "ACTIVE"
+
+  - step: wait
+    ms: 100
+
+  - step: assert
+    register: voltage
+    equals: 120.0
+
+  - step: command
+    action: reset
+
+  - step: wait
+    ms: 50
+
+  - step: assert
+    register: state
+    equals: "IDLE"

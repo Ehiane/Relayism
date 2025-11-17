@@ -1,0 +1,49 @@
+name: "Temperature Fault Test"
+description: "Tests device thermal protection and fault handling"
+
+steps:
+  - step: write
+    register: voltage
+    value: 120.0
+
+  - step: write
+    register: current
+    value: 8.0
+
+  - step: write
+    register: temperature
+    value: 25.0
+
+  - step: command
+    action: activate
+
+  - step: assert
+    register: state
+    equals: "ACTIVE"
+
+  - step: assert
+    register: temperature
+    less_than: 30.0
+
+  - step: command
+    action: inject_fault
+    fault_type: temperature
+
+  - step: assert
+    register: state
+    equals: "FAULT"
+
+  - step: assert
+    register: temperature
+    greater_or_equal: 90.0
+
+  - step: assert
+    register: trip_flag
+    equals: true
+
+  - step: command
+    action: reset
+
+  - step: assert
+    register: state
+    equals: "IDLE"

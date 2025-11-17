@@ -1,0 +1,49 @@
+name: "Fault Injection Test"
+description: "Tests device behavior under overcurrent fault condition"
+
+steps:
+  - step: write
+    register: voltage
+    value: 120.0
+
+  - step: write
+    register: current
+    value: 5.0
+
+  - step: command
+    action: activate
+
+  - step: assert
+    register: state
+    equals: "ACTIVE"
+
+  - step: command
+    action: inject_fault
+    fault_type: overcurrent
+
+  - step: assert
+    register: state
+    equals: "FAULT"
+
+  - step: assert
+    register: trip_flag
+    equals: true
+
+  - step: assert
+    register: trip_count
+    greater_or_equal: 1
+
+  - step: assert
+    register: current
+    greater_than: 100.0
+
+  - step: command
+    action: reset
+
+  - step: assert
+    register: state
+    equals: "IDLE"
+
+  - step: assert
+    register: trip_flag
+    equals: false

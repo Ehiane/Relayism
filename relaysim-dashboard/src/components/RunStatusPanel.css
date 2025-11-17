@@ -1,0 +1,150 @@
+.run-status-panel {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.run-status-panel h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.status-icon {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.status-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.status-idle {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.status-running {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-passed {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+}
+
+.status-failed {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+}
+
+.status-error {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+  color: white;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.run-details {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+}
+
+.run-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.run-detail-row .label {
+  font-weight: 600;
+  color: #666;
+}
+
+.run-detail-row .value {
+  color: #333;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+}
+
+.error-text {
+  color: #eb3349;
+  font-weight: bold;
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff5f5;
+  border-left: 4px solid #eb3349;
+  color: #c53030;
+  border-radius: 4px;
+}
+
+.step-summary {
+  display: flex;
+  gap: 4px;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.step-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.step-indicator:hover {
+  transform: scale(1.5);
+}
+
+.step-pass {
+  background: #38ef7d;
+}
+
+.step-fail {
+  background: #eb3349;
+}
+
+.step-error {
+  background: #ffa500;
+}
+
+.no-run-message {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+}
+
+.no-run-message p {
+  margin: 0.5rem 0;
+}

@@ -1,0 +1,41 @@
+name: "Overvoltage Protection Test"
+description: "Tests device protection under overvoltage fault condition"
+
+steps:
+  - step: write
+    register: voltage
+    value: 240.0
+
+  - step: write
+    register: current
+    value: 3.0
+
+  - step: command
+    action: activate
+
+  - step: assert
+    register: state
+    equals: "ACTIVE"
+
+  - step: command
+    action: inject_fault
+    fault_type: overvoltage
+
+  - step: assert
+    register: state
+    equals: "FAULT"
+
+  - step: assert
+    register: trip_flag
+    equals: true
+
+  - step: assert
+    register: voltage
+    greater_than: 400.0
+
+  - step: command
+    action: reset
+
+  - step: assert
+    register: state
+    equals: "IDLE"
