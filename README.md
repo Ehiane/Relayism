@@ -9,7 +9,7 @@ A production-quality test infrastructure system for simulating and testing firmw
 
 ## Overview
 
-**Relaysim** is a comprehensive automated test harness that:
+**Relayism** is a comprehensive automated test harness that:
 
 - Simulates a firmware-controlled relay/protection device with realistic state machine behavior
 - Executes YAML-based test scenarios with deterministic, reproducible results
